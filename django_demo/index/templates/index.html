@@ -1,0 +1,32 @@
+<table>
+    <tr>
+        <th>id</th>
+        <th>method</th>
+        <th>time</th>
+        <th>comment</th>        
+    </tr>
+    {% for item in latest_requests %}
+    <tr>
+        <td>{{ item.id }}</td>
+        <td>{{ item.rtype }}</td>
+        <td>{{ item.time }}</td>
+        {% if item.comment %}
+            <td>{{ item.comment }}</td>
+        {% else %}
+            <td></td>
+        {% endif %}
+    {% endfor %}
+    </tr>
+</table>    
+<h2>System Date</h2>
+<p>{{ date }}</p>
+
+<h2>CPU Info</h2>
+<table>
+    {% for item in cpuinfo %}
+    <tr>
+        <td>{{ item.0 }}</td>
+        <td>{{ item.1 }}</td>
+    </tr>
+    {% endfor %}
+</table>
