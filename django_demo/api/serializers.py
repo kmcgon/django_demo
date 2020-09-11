@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from ..models import Requests
+from .models import Requests
 
 
 class RequestSerializer(serializers.HyperlinkedModelSerializer):
