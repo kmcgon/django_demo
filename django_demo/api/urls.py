@@ -1,14 +1,15 @@
 from django.urls import include, path
-
 from rest_framework import routers
 
+from .views import RequestViewSet, index
 
-from .views import RequestViewSet
-
-router = routers.DefaultRouter()
-router.register(r"", RequestViewSet)
-
+# views for the 'list' route for api. Ex: GET - http://localhost:8000/api
+list_views = RequestViewSet.as_view({'get': 'list'})
+# view for the 'detail' routes. Ex: POST - http://localhost:8000/api/4
+detail_views = RequestViewSet.as_view({'get': 'retrieve', "delete": "destroy", "post": 'partial_update'})
 
 urlpatterns = [
-    path("<id>/", include(router.urls)),
+    path("", index),
+    path("api/", list_views),
+    path("api/<id>/", detail_views),
 ]
